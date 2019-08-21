@@ -16,6 +16,8 @@ var textVerticalOffset = 20;
 var textFontStyle = '16px "PT Mono"';
 var textColor = '#000';
 var cloudStartCoord = [100, 10];
+var playersNamesOffset = 15;
+var playersValuesOffset = 10;
 
 var renderCloud = function(ctx, cloudCoord) {
     ctx.fillStyle = CLOUD_SHADOW_FILL;
@@ -50,13 +52,18 @@ window.renderStatistics = function(ctx, names, times) {
 
     var heightRatio = getMaxValue(times) / BAR_HEIGHT;
     for (var i = 0; i < names.length; i++) {
+        var barWidth = barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset);
+        var barHeight = -Math.floor(times[i] / heightRatio);
+
         ctx.fillStyle = (i === 0) ? PLAYER_BAR_COLOR : getRandomBlueColorHSL();
-        ctx.fillRect((barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset)), barStartCoord[1], BAR_WIDTH, -Math.floor(times[i] / heightRatio));
+        ctx.fillRect(barWidth, barStartCoord[1], BAR_WIDTH, barHeight);
 
         ctx.fillStyle = '#000';
-        ctx.fillText(names[i], (barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset)), barStartCoord[1] + 15);
+        ctx.fillText(names[i], barWidth, barStartCoord[1] + playersNamesOffset);
+        ctx.fillText(Math.floor(times[i]), barWidth, barStartCoord[1] + barHeight - playersValuesOffset);
     }
 
     this.console.log(getRandomBlueColorHSL());
     this.console.log(names);
+    this.console.log(times);
 };
