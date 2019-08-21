@@ -7,7 +7,7 @@ var CLOUD_SHADOW_FILL = 'rgba(0, 0, 0, 0.7)';
 var SHADOW_OFFSET = 10;
 var BAR_WIDTH = 40;
 var BAR_HEIGHT = 150;
-var PLAYERS_BAR_COLOR = 'rgba(255, 0, 0, 1)';
+var PLAYER_BAR_COLOR = 'rgba(255, 0, 0, 1)';
 
 var barStartCoord = [150, 240];
 var barHorizontalOffset = 50;
@@ -35,6 +35,11 @@ var getMaxValue = function(times) {
     return maxValue;
 };
 
+var getRandomBlueColorHSL = function() {
+    var randomSaturation = Math.floor(Math.random() * 101);
+    return 'hsl(240, ' + randomSaturation + '%, 50%)';
+}
+
 window.renderStatistics = function(ctx, names, times) {
     renderCloud(ctx, cloudStartCoord);
 
@@ -45,12 +50,10 @@ window.renderStatistics = function(ctx, names, times) {
 
     var heightRatio = getMaxValue(times) / BAR_HEIGHT;
     for (var i = 0; i < names.length; i++) {
-        ctx.fillStyle = PLAYERS_BAR_COLOR;
+        ctx.fillStyle = (i === 0) ? PLAYER_BAR_COLOR : getRandomBlueColorHSL();
         ctx.fillRect((barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset)), barStartCoord[1], BAR_WIDTH, -Math.floor(times[i] / heightRatio));
     }
 
+    this.console.log(getRandomBlueColorHSL());
     this.console.log(names);
-    this.console.log(times);
-    this.console.log(getMaxValue(times));
-    this.console.log(Math.floor(times[0] / heightRatio));
 };
