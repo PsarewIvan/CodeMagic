@@ -52,6 +52,9 @@ window.renderStatistics = function(ctx, names, times) {
     for (var i = 0; i < names.length; i++) {
         ctx.fillStyle = (i === 0) ? PLAYER_BAR_COLOR : getRandomBlueColorHSL();
         ctx.fillRect((barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset)), barStartCoord[1], BAR_WIDTH, -Math.floor(times[i] / heightRatio));
+
+        ctx.fillStyle = '#000';
+        ctx.fillText(names[i], (barStartCoord[0] + i * (BAR_WIDTH + barHorizontalOffset)), barStartCoord[1] + 15);
     }
 
     this.console.log(getRandomBlueColorHSL());
