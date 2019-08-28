@@ -53,7 +53,7 @@ var getRandomWizardName = function(firstArray, secondArray) {
   } else {
     return getRandomArrayValue(secondArray) + ' ' + getRandomArrayValue(firstArray);
   }
-}
+};
 
 var getRandomWizards = function(count) {
   var wizards = []
@@ -73,7 +73,7 @@ var buildWizard = function(wizard) {
   element.querySelector('.wizard-coat').setAttribute('fill', wizard.coatColor);
   element.querySelector('.wizard-eyes').setAttribute('fill', wizard.eyesColor);
   return element;
-}
+};
 
 var fillingWizards = function(count) {
   var fragment = document.createDocumentFragment();
@@ -82,7 +82,7 @@ var fillingWizards = function(count) {
     fragment.appendChild(buildWizard(wizards[i]));
   }
   return fragment;
-}
+};
 
 wizardsDomParent.appendChild(fillingWizards(numberOfWizards));
 console.log(buildWizard(getRandomWizards(2)[0]));
