@@ -150,14 +150,27 @@ userName.addEventListener('invalid', function(evt) {
 var playerSetup = document.querySelector('.setup-player');
 var wizardCoat = playerSetup.querySelector('.wizard-coat');
 var wizardCoatInput = playerSetup.querySelector('.js__input-coat-color');
-var wizardEyesInput = playerSetup.querySelector('.js__input-eyes-color');
 
-var toggleWiardCoat = function() {
+var toggleWizardCoat = function() {
   var randomCoatColor = getRandomArrayValue(coatColors);
   wizardCoat.setAttribute('style', 'fill: ' + randomCoatColor + ';');
   wizardCoatInput.setAttribute('value', randomCoatColor);
 };
 
 wizardCoat.addEventListener('click', function() {
-  toggleWiardCoat();
+  toggleWizardCoat();
+});
+
+// --------- Изменение цвета глаз персонажа -----------
+var wizardEyes = playerSetup.querySelector('.wizard-eyes');
+var wizardEyesInput = playerSetup.querySelector('.js__input-eyes-color');
+
+var toggleWizardEyes = function() {
+  var randomEyesColor = getRandomArrayValue(eyesColors);
+  wizardEyes.setAttribute('style', 'fill: ' + randomEyesColor + ';');
+  wizardEyesInput.setAttribute('value', randomEyesColor);
+}
+
+wizardEyes.addEventListener('click', function() {
+  toggleWizardEyes();
 });

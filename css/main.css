@@ -872,6 +872,7 @@ input[type=radio]:checked + .review-mark-label {
   top: 0;
 }
 
-.wizard-coat:hover {
+.wizard-coat:hover,
+.wizard-eyes:hover {
   cursor: pointer;
 }
