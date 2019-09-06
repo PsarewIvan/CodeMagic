@@ -1,8 +1,5 @@
 'use strict'
 
-document.querySelector('.setup').classList.remove('hidden');
-document.querySelector('.setup-similar').classList.remove('hidden');
-
 var names = [
   'Иван',
   'Хуан Себастьян',
@@ -85,4 +82,50 @@ var fillingWizards = function(count) {
 };
 
 wizardsDomParent.appendChild(fillingWizards(numberOfWizards));
-console.log(buildWizard(getRandomWizards(2)[0]));
+
+//-------- Открытие/закрытие окна настройки персонажа ------------
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
+var setupOpenBlock = document.querySelector('.setup-open');
+var setupBlock = document.querySelector('.setup');
+var setupCloseBlock = setupBlock.querySelector('.setup-close');
+
+var openPopup = function() {
+  setupBlock.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function() {
+  setupBlock.classList.add('hidden');
+  document.removeEventListener('keydown', onPopupEscPress);
+};
+
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
+};
+
+var onPopupOpenBlockEnterPress = function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+};
+
+var onPopupCloseBlockEnterPress = function(evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
+};
+
+setupOpenBlock.addEventListener('keydown', onPopupOpenBlockEnterPress);
+
+setupCloseBlock.addEventListener('keydown', onPopupCloseBlockEnterPress);
+
+setupOpenBlock.addEventListener('click', function() {
+  openPopup();
+});
+
+setupCloseBlock.addEventListener('click', function() {
+  closePopup();
+});
