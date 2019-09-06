@@ -35,6 +35,13 @@ var eyesColors = [
   'yellow',
   'green'
 ];
+var fireballColors = [
+  '#ee4830',
+  '#30a8ee',
+  '#5ce6c0',
+  '#e848d5',
+  '#e6e848'
+];
 var numberOfWizards = 4;
 var wizardsDomParent = document.querySelector('.setup-similar-list');
 var template = document.querySelector('#similar-wizard-template')
@@ -169,8 +176,23 @@ var toggleWizardEyes = function() {
   var randomEyesColor = getRandomArrayValue(eyesColors);
   wizardEyes.setAttribute('style', 'fill: ' + randomEyesColor + ';');
   wizardEyesInput.setAttribute('value', randomEyesColor);
-}
+};
 
 wizardEyes.addEventListener('click', function() {
   toggleWizardEyes();
+});
+
+// ---------- Изменение цвета фаерболла -----------
+var fireballBlock = playerSetup.querySelector('.setup-fireball');
+var fireballWrapColor = playerSetup.querySelector('.setup-fireball-wrap');
+var fireballInput = playerSetup.querySelector('.js__input-fireball-color');
+
+var toggleFireballColor = function() {
+  var randomFireballColor = getRandomArrayValue(fireballColors);
+  fireballWrapColor.setAttribute('style', 'background: ' + randomFireballColor + ';');
+  fireballInput.setAttribute('value', randomFireballColor);
+};
+
+fireballBlock.addEventListener('click', function() {
+  toggleFireballColor();
 });
