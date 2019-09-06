@@ -129,3 +129,35 @@ setupOpenBlock.addEventListener('click', function() {
 setupCloseBlock.addEventListener('click', function() {
   closePopup();
 });
+
+
+// --------- Валидация формы ------------
+var userName = document.querySelector('.setup-user-name');
+
+userName.addEventListener('invalid', function(evt) {
+  if (userName.validity.tooShort) {
+    userName.setCustomValidity('Минимум 2 символа');
+  } else if (userName.validity.tooLong) {
+    userName.setCustomValidity('Максимум 25 символов');
+  } else if (userName.validity.valueMissing) {
+    userName.setCustomValidity('Обязательное поле');
+  } else {
+    userName.setCustomValidity('');
+  }
+});
+
+// --------- Изменение цвета мантии персонажа ----------
+var playerSetup = document.querySelector('.setup-player');
+var wizardCoat = playerSetup.querySelector('.wizard-coat');
+var wizardCoatInput = playerSetup.querySelector('.js__input-coat-color');
+var wizardEyesInput = playerSetup.querySelector('.js__input-eyes-color');
+
+var toggleWiardCoat = function() {
+  var randomCoatColor = getRandomArrayValue(coatColors);
+  wizardCoat.setAttribute('style', 'fill: ' + randomCoatColor + ';');
+  wizardCoatInput.setAttribute('value', randomCoatColor);
+};
+
+wizardCoat.addEventListener('click', function() {
+  toggleWiardCoat();
+});
