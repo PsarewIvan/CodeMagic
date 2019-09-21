@@ -97,8 +97,13 @@ var ENTER_KEYCODE = 13;
 var setupOpenBlock = document.querySelector('.setup-open');
 var setupBlock = document.querySelector('.setup');
 var setupCloseBlock = setupBlock.querySelector('.setup-close');
+var startPopupCords = {
+  x: setupBlock.style.left,
+  y: setupBlock.style.top
+};
 
 var openPopup = function() {
+
   setupBlock.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };
@@ -106,6 +111,9 @@ var openPopup = function() {
 var closePopup = function() {
   setupBlock.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
+
+  setupBlock.style.top = startPopupCords.x;
+  setupBlock.style.left = startPopupCords.y;
 };
 
 var onPopupEscPress = function (evt) {
