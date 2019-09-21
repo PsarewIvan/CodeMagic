@@ -52,7 +52,7 @@ var getRandomArrayValue = function(array) {
 };
 
 var getRandomWizardName = function(firstArray, secondArray) {
-  if ( Boolean(Math.round(Math.random())) ) {
+  if ( Math.round(Math.random()) ) {
     return getRandomArrayValue(firstArray) + ' ' + getRandomArrayValue(secondArray);
   } else {
     return getRandomArrayValue(secondArray) + ' ' + getRandomArrayValue(firstArray);
@@ -89,6 +89,7 @@ var fillingWizards = function(count) {
 };
 
 wizardsDomParent.appendChild(fillingWizards(numberOfWizards));
+document.querySelector('.setup-similar').classList.remove('hidden');
 
 //-------- Открытие/закрытие окна настройки персонажа ------------
 var ESC_KEYCODE = 27;
