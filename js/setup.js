@@ -141,7 +141,7 @@ setupCloseBlock.addEventListener('click', function() {
 // --------- Валидация формы ------------
 var userName = document.querySelector('.setup-user-name');
 
-userName.addEventListener('invalid', function(evt) {
+userName.addEventListener('invalid', function() {
   if (userName.validity.tooShort) {
     userName.setCustomValidity('Минимум 2 символа');
   } else if (userName.validity.tooLong) {
