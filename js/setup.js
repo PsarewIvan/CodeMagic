@@ -1,5 +1,6 @@
 'use strict';
 
+// Показ/скрытие попапа
 (function () {
   // global ---
   window.setup = {

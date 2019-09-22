@@ -1,5 +1,6 @@
 'use strict';
 
+// Глобальные переменные и функции
 window.global = (function () {
   return {
     ESC_KEYCODE: 27,

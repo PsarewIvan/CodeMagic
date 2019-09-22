@@ -1,5 +1,6 @@
 'use strict';
 
+// Добавляет перетаскивание окна с настройками за иконку аватарки
 (function () {
   var userPic = document.querySelector('.upload');
 

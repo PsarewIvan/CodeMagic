@@ -1,5 +1,6 @@
 'use strict';
 
+// Работа с формой
 (function () {
   var userName = document.querySelector('.setup-user-name');
   var playerSetup = document.querySelector('.setup-player');

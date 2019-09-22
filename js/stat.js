@@ -1,5 +1,6 @@
 'use strict';
 
+// Работа с облаком статистики при завершении уровня
 (function () {
   var CLOUD_WIDTH = 420;
   var CLOUD_HEIGHT = 270;
